@@ -1,7 +1,6 @@
-
 using System.ComponentModel.DataAnnotations;
 
-namespace GestaoEscolar_M3S01.Models;
+namespace GestaoEscolar_M3S01.Api.Subject.Model;
 
 public class Subject
 {

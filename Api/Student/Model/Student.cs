@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GestaoEscolar_M3S01.Models;
+namespace GestaoEscolar_M3S01.Api.Student.Model;
 
 public class Student
 {

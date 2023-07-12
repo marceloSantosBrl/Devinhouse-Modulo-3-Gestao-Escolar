@@ -6,5 +6,4 @@ public class SchoolClass
 {
     [Key] public int Id { get; set; }
     [Required][MaxLength(50)] public string Course { get; set; } = null!;
-        
 }

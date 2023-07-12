@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GestaoEscolar_M3S01.Api.Student.Model;
 
 namespace GestaoEscolar_M3S01.Models;
 
