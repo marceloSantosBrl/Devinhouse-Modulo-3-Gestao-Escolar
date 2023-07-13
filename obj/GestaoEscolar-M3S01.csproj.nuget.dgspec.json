@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\marce\\source\\repos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj": {}
+    "C:\\Users\\marce\\OneDrive\\Documentos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj": {}
   },
   "projects": {
-    "c:\\Users\\marce\\source\\repos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj": {
+    "C:\\Users\\marce\\OneDrive\\Documentos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\marce\\source\\repos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj",
+        "projectUniqueName": "C:\\Users\\marce\\OneDrive\\Documentos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj",
         "projectName": "GestaoEscolar-M3S01",
-        "projectPath": "c:\\Users\\marce\\source\\repos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj",
+        "projectPath": "C:\\Users\\marce\\OneDrive\\Documentos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01.csproj",
         "packagesPath": "C:\\Users\\marce\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\marce\\source\\repos\\GestaoEscolar-M3S01\\GestaoEscolar-M3S01\\obj\\",
+        "outputPath": "C:\\Users\\marce\\OneDrive\\Documentos\\GestaoEscolar-M3S01\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,6 +45,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

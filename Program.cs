@@ -1,4 +1,5 @@
 using GestaoEscolar_M3S01.Api.Subject.Repository;
+using GestaoEscolar_M3S01.Api.Subject.Validatior;
 using GestaoEscolar_M3S01.Models.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SchoolContext>();
 builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
-
+builder.Services.AddTransient<SubjectValidator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
