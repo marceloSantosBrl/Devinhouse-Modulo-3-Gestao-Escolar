@@ -1,5 +1,7 @@
+using FluentValidation;
 using GestaoEscolar_M3S01.Api.Subject.DTO;
 using GestaoEscolar_M3S01.Api.Subject.Mappings;
+using GestaoEscolar_M3S01.Api.Subject.Validatior;
 using GestaoEscolar_M3S01.Models.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +10,12 @@ namespace GestaoEscolar_M3S01.Api.Subject.Repository;
 public class SubjectRepository: ISubjectRepository
 {
     private readonly SchoolContext _schoolContext;
+    private readonly SubjectValidator _validator;
 
-    public SubjectRepository(SchoolContext schoolContext)
+    public SubjectRepository(SchoolContext schoolContext, SubjectValidator validator)
     {
         _schoolContext = schoolContext;
+        _validator = validator;
     }
 
     public async Task<ICollection<SubjectResponse>> GetSubjects(int? id, string? name)
@@ -29,5 +33,14 @@ public class SubjectRepository: ISubjectRepository
             .Select(s => SubjectEntityResponse.GetResponse(s))
             .ToListAsync();
         return entities;
+    }
+
+    public async Task<Model.Subject> AddSubject(SubjectRequest request)
+    {
+        var entity = SubjectRequestEntity.GetSubject(request);
+        await _validator.ValidateAndThrowAsync(entity);
+        _schoolContext.Subjects.Add(entity);
+        await _schoolContext.SaveChangesAsync();
+        return entity;
     }
 }
