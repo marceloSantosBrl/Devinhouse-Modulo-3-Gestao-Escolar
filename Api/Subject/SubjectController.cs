@@ -62,4 +62,25 @@ public class SubjectController : ControllerBase
             return NotFound();
         }
     }
+    
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [HttpPut]
+    public async Task<IActionResult> CreateSubject([FromBody] SubjectRequest request)
+    {
+        try
+        {
+            var response = await _repository.AddSubject(request);
+            return Created($"api/materia?id={response.Id}", response);
+        }
+        catch (FluentValidation.ValidationException)
+        {
+            return BadRequest();
+        }
+        catch (DbUpdateException)
+        {
+            return Conflict();
+        }
+    }
 }
