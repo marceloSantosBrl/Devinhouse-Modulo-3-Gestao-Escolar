@@ -1,4 +1,5 @@
 using System.Data.Common;
+using GestaoEscolar_M3S01.Api.Report.DTO;
 using GestaoEscolar_M3S01.Api.Report.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ public class ReportController : ControllerBase
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     [HttpGet]
-    public async Task<IActionResult> GetStudent([FromRoute] int id)
+    public async Task<IActionResult> GetReport([FromRoute] int id)
     {
         try
         {
@@ -30,4 +31,25 @@ public class ReportController : ControllerBase
             return NotFound();
         }
     }
+
+    [ProducesResponseType(201)]
+    [ProducesResponseType(400)]
+    [HttpPost]
+    public async Task<IActionResult> AddReport(ReportRequest request)
+    {
+        try
+        {
+            var response = await _repository.AddReport(request);
+            return Created($"api/student/{response.StudentId}/reports", response);
+        }
+        catch (DbException)
+        {
+            return BadRequest();
+        }
+        catch (ArgumentException)
+        {
+            return BadRequest();
+        }
+    }
+
 }

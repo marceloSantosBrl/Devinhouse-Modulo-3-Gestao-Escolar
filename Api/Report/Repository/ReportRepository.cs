@@ -29,4 +29,18 @@ public class ReportRepository: IReportRepository
             .FirstAsync(r => r.StudentId == id);
         return EntityToResponse(entity);
     }
+
+    public async Task<ReportRequest> AddReport(ReportRequest request)
+    {
+        var entity = new Models.Report()
+        {
+            OrderDate = request.OrderDate ??
+                        throw new ArgumentException("field orderDate is null"),
+            StudentId = request.StudentId ??
+                        throw new AggregateException("field StudentId is null")
+        };
+        _context.Reports.Add(entity);
+        await _context.SaveChangesAsync();
+        return request;
+    }
 }
