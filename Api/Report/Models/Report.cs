@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using GestaoEscolar_M3S01.Api.Student.Model;
 
-namespace GestaoEscolar_M3S01.Models;
+namespace GestaoEscolar_M3S01.Api.Report.Models;
 
 public class Report
 {
     [Key] public int Id {get;set;}
-    [Required] public Student Student {get;set;} = null!;
+    [Required] public Student.Model.Student Student {get;set;} = null!;
     [Required] [ForeignKey("Student")] public int StudentId {get;set; }
     [Required] public DateTime OrderDate {get;set; }
 }

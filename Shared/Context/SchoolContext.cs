@@ -1,3 +1,4 @@
+using GestaoEscolar_M3S01.Api.Report.Models;
 using GestaoEscolar_M3S01.Api.Student.Model;
 using GestaoEscolar_M3S01.Api.Subject.Model;
 using Microsoft.EntityFrameworkCore;
