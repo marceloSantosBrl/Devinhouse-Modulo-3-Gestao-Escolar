@@ -26,7 +26,7 @@ public class ReportRepository: IReportRepository
     public async Task<ReportResponse> GetReport(int id)
     {
         var entity = await _context.Reports
-            .FirstAsync(r => r.Id == id);
+            .FirstAsync(r => r.StudentId == id);
         return EntityToResponse(entity);
     }
 }
