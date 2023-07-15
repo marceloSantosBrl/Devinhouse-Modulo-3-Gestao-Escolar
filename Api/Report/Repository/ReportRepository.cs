@@ -23,10 +23,10 @@ public class ReportRepository: IReportRepository
         _context = context;
     }
     
-    public async Task<ReportResponse> GetReport(int id)
+    public async Task<ReportResponse> GetReport(int studentId)
     {
         var entity = await _context.Reports
-            .FirstAsync(r => r.StudentId == id);
+            .FirstAsync(r => r.StudentId == studentId);
         return EntityToResponse(entity);
     }
 
@@ -42,5 +42,16 @@ public class ReportRepository: IReportRepository
         _context.Reports.Add(entity);
         await _context.SaveChangesAsync();
         return request;
+    }
+
+    public async Task DeleteReport(int studentId)
+    {
+        var recordsChanged = await _context.Reports
+            .Where(r => r.StudentId == studentId)
+            .ExecuteDeleteAsync();
+        if (recordsChanged == 0)
+        {
+            throw new DbUpdateException();
+        }
     }
 }

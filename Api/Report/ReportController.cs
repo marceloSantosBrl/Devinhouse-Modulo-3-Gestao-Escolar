@@ -2,6 +2,7 @@ using System.Data.Common;
 using GestaoEscolar_M3S01.Api.Report.DTO;
 using GestaoEscolar_M3S01.Api.Report.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestaoEscolar_M3S01.Api.Report;
 
@@ -52,4 +53,18 @@ public class ReportController : ControllerBase
         }
     }
 
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> DeleteReport([FromRoute] int id)
+    {
+        try
+        {
+            await _repository.DeleteReport(id);
+            return NoContent();
+        }
+        catch (DbUpdateException)
+        {
+            return NotFound();
+        }
+    }
 }
