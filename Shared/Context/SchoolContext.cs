@@ -1,6 +1,7 @@
 using GestaoEscolar_M3S01.Api.Report.Models;
 using GestaoEscolar_M3S01.Api.Student.Model;
 using GestaoEscolar_M3S01.Api.Subject.Model;
+using GestaoEscolar_M3S01.Api.SubjectRating.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoEscolar_M3S01.Models.Context;

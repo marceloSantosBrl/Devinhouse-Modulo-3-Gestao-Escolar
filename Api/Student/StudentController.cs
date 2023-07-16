@@ -6,4 +6,5 @@ namespace GestaoEscolar_M3S01.Api.Student;
 [ApiController]
 public class StudentController : ControllerBase
 {
+    
 }

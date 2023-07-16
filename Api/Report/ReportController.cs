@@ -55,6 +55,7 @@ public class ReportController : ControllerBase
 
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
+    [HttpDelete]
     public async Task<IActionResult> DeleteReport([FromRoute] int id)
     {
         try

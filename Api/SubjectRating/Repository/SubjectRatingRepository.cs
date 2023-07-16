@@ -1,0 +1,30 @@
+using GestaoEscolar_M3S01.Api.SubjectRating.DTO;
+using GestaoEscolar_M3S01.Models.Context;
+using Microsoft.EntityFrameworkCore;
+
+namespace GestaoEscolar_M3S01.Api.SubjectRating.Repository;
+
+public class SubjectRatingRepository: ISubjectRatingRepository
+{
+    private readonly SchoolContext _context;
+
+    public SubjectRatingRepository(SchoolContext context)
+    {
+        _context = context;
+    }
+    
+    public async Task<SubjectRatingResponse> GetSubjectResponse(int studentId, int reportId)
+    {
+        var entity = await _context.SubjectRatings
+            .FirstAsync(s => s.Report.Id == reportId && 
+                             s.Report.StudentId == studentId);
+        var response = new SubjectRatingResponse()
+        {
+            Id = entity.Id,
+            Mark = entity.Mark,
+            ReportId = entity.ReportId,
+            SubjectId = entity.SubjectId
+        };
+        return response;
+    }
+}
