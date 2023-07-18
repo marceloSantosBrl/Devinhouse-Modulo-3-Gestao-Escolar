@@ -29,6 +29,4 @@ public class SubjectRatingController : ControllerBase
             return NotFound();
         }
     }
-    
-    
 }
