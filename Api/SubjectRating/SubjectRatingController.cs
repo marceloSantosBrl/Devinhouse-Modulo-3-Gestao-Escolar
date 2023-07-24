@@ -1,5 +1,7 @@
+using GestaoEscolar_M3S01.Api.SubjectRating.DTO;
 using GestaoEscolar_M3S01.Api.SubjectRating.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestaoEscolar_M3S01.Api.SubjectRating;
 
@@ -27,6 +29,23 @@ public class SubjectRatingController : ControllerBase
         catch (InvalidOperationException)
         {
             return NotFound();
+        }
+    }
+
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [HttpPost]
+    public async Task<IActionResult> AddStudentReport([FromBody] SubjectRatingRequest request)
+    {
+        try
+        {
+            var entity = await  _repository.AddSubjectReport(request);
+            return Created($"", entity);
+        }
+        catch (DbUpdateException)
+        {
+            return Conflict();
         }
     }
 }

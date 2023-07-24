@@ -27,4 +27,17 @@ public class SubjectRatingRepository: ISubjectRatingRepository
         };
         return response;
     }
+
+    public async Task<Models.SubjectRating> AddSubjectReport(SubjectRatingRequest request)
+    {
+        var entity = new Models.SubjectRating
+        {
+            ReportId = request.ReportId,
+            SubjectId = request.SubjectId,
+            Mark = request.Mark
+        };
+        _context.SubjectRatings.Add(entity);
+        await _context.SaveChangesAsync();
+        return entity;
+    }
 }
