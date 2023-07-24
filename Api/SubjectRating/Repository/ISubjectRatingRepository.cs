@@ -6,4 +6,5 @@ public interface ISubjectRatingRepository
 {
     public Task<SubjectRatingResponse> GetSubjectResponse(int studentId, int reportId);
     public Task<Models.SubjectRating> AddSubjectReport(SubjectRatingRequest request);
+    public Task DeleteSubjectReport(int id);
 }

@@ -40,4 +40,15 @@ public class SubjectRatingRepository: ISubjectRatingRepository
         await _context.SaveChangesAsync();
         return entity;
     }
+
+    public async Task DeleteSubjectReport(int id)
+    {
+        var recordsChanged = await _context.SubjectRatings
+            .Where(sr => sr.Id == id)
+            .ExecuteDeleteAsync();
+        if (recordsChanged == 0)
+        {
+            throw new DbUpdateException();
+        }
+    }
 }

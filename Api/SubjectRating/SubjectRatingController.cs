@@ -48,4 +48,20 @@ public class SubjectRatingController : ControllerBase
             return Conflict();
         }
     }
+
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteStudentReport([FromRoute] int id)
+    {
+        try
+        {
+            await _repository.DeleteSubjectReport(id);
+            return NoContent();
+        }
+        catch (DbUpdateException)
+        {
+            return NotFound();
+        }
+    }
 }
