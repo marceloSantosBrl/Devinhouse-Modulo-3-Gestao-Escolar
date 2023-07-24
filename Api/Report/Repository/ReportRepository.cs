@@ -1,5 +1,5 @@
 using GestaoEscolar_M3S01.Api.Report.DTO;
-using GestaoEscolar_M3S01.Models.Context;
+using GestaoEscolar_M3S01.Shared.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoEscolar_M3S01.Api.Report.Repository;

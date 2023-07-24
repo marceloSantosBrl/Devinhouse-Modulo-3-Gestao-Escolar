@@ -2,7 +2,7 @@ using FluentValidation;
 using GestaoEscolar_M3S01.Api.Subject.DTO;
 using GestaoEscolar_M3S01.Api.Subject.Mappings;
 using GestaoEscolar_M3S01.Api.Subject.Validatior;
-using GestaoEscolar_M3S01.Models.Context;
+using GestaoEscolar_M3S01.Shared.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoEscolar_M3S01.Api.Subject.Repository;
