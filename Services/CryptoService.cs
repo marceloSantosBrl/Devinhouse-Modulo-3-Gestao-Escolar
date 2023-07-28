@@ -1,17 +1,19 @@
 using System.Security.Cryptography;
 using System.Text;
 
+namespace GestaoEscolar_M3S01.Services;
 
-namespace GestaoEscolar_M3S01.Utils;
-
-public static class CryptoUtils
+public class CryptoService: ICryptoService
 {
-    public static Func<string, string> HashPasword = password =>
+    public byte[] GetSalt(int keySize)
     {
-        const int keySize = 64;
+        return RandomNumberGenerator.GetBytes(keySize);
+    }
+
+    public string GetHash(string password, int keySize, byte[] salt)
+    {
         const int iterations = 350000;
         var hashAlgorithm = HashAlgorithmName.SHA512;
-        var salt = RandomNumberGenerator.GetBytes(keySize);
         var hash = Rfc2898DeriveBytes.Pbkdf2(
             Encoding.UTF8.GetBytes(password),
             salt,
@@ -19,5 +21,5 @@ public static class CryptoUtils
             hashAlgorithm,
             keySize);
         return Convert.ToHexString(hash);
-    };
+    }
 }

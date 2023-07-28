@@ -16,4 +16,5 @@ public class User
     [Required] public AccessType AccessType { get; set; }
     [Required] [MaxLength(100)] public string UserName { get; set; } = null!;
     [Required] [MaxLength(256)] public string Hash { get; set; } = null!;
+    [Required] [MaxLength(256)] public byte[] Salt { get; set; } = null!;
 }

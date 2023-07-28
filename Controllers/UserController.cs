@@ -1,7 +1,6 @@
 using GestaoEscolar_M3S01.DTO;
 using GestaoEscolar_M3S01.Mappings;
 using GestaoEscolar_M3S01.Services;
-using GestaoEscolar_M3S01.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoEscolar_M3S01.Controllers;
@@ -36,7 +35,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            var user = await _service.CreateUser(request, UserMappings.UserRequestToEntity);
+            var user = await _service.CreateUser(request);
             return Created($"/usuario/{user.Id}", null);
         }
         catch (Exception e)
@@ -51,8 +50,7 @@ public class UserController : ControllerBase
     {
         try
         {
-            var response = await _service.UpdateUser(id, request, 
-                CryptoUtils.HashPasword);
+            var response = await _service.UpdateUser(id, request);
             return Ok(response);
         }
         catch (Exception)

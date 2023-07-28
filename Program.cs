@@ -2,6 +2,7 @@ using GestaoEscolar_M3S01.Api.Report.Repository;
 using GestaoEscolar_M3S01.Api.Subject.Repository;
 using GestaoEscolar_M3S01.Api.Subject.Validatior;
 using GestaoEscolar_M3S01.Api.SubjectRating.Repository;
+using GestaoEscolar_M3S01.Mappings;
 using GestaoEscolar_M3S01.Repository;
 using GestaoEscolar_M3S01.Services;
 using GestaoEscolar_M3S01.Shared.Context;
@@ -20,6 +21,8 @@ builder.Services.AddScoped<IReportRepository, ReportRepository>();
 builder.Services.AddScoped<ISubjectRatingRepository, SubjectRatingRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddTransient<ICryptoService, CryptoService>();
+builder.Services.AddTransient<IUserMapping, UserMapping>();
 builder.Services.AddTransient<SubjectValidator>();
 var app = builder.Build();
 
