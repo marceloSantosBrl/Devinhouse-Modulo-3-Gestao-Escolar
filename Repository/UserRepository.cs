@@ -19,6 +19,12 @@ public class UserRepository : IUserRepository
         return user;
     }
 
+    public async Task<User> GetUser(string userName)
+    {
+        var user = await _context.Users.FirstAsync(u => u.UserName == userName);
+        return user;
+    }
+
     public async Task<int> AddUser(User user)
     {
         _context.Users.Add(user);
@@ -33,6 +39,7 @@ public class UserRepository : IUserRepository
         userEntity.UserName = user.UserName;
         userEntity.AccessType = user.AccessType;
         userEntity.Hash = user.Hash;
+        userEntity.Salt = user.Salt;
         var recordsChanged = await _context.SaveChangesAsync();
         return recordsChanged;
     }

@@ -1,6 +1,6 @@
 using GestaoEscolar_M3S01.DTO;
-using GestaoEscolar_M3S01.Mappings;
 using GestaoEscolar_M3S01.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoEscolar_M3S01.Controllers;
@@ -59,6 +59,7 @@ public class UserController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteUser([FromRoute] int id)
     {
