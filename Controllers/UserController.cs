@@ -31,6 +31,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> AddUser([FromQuery] UserRequest request)
     {
         try
@@ -59,7 +60,6 @@ public class UserController : ControllerBase
         }
     }
 
-    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteUser([FromRoute] int id)
     {

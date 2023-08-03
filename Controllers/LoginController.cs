@@ -1,5 +1,6 @@
 using GestaoEscolar_M3S01.DTO;
 using GestaoEscolar_M3S01.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoEscolar_M3S01.Controllers;
@@ -21,6 +22,7 @@ public class LoginController : ControllerBase
 
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
     {
         try
