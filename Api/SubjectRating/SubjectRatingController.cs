@@ -1,5 +1,6 @@
 using GestaoEscolar_M3S01.Api.SubjectRating.DTO;
 using GestaoEscolar_M3S01.Api.SubjectRating.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -35,6 +36,7 @@ public class SubjectRatingController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [Authorize(Policy = "Teacher")]
     [HttpPost]
     public async Task<IActionResult> AddStudentReport([FromBody] SubjectRatingRequest request)
     {
@@ -51,6 +53,7 @@ public class SubjectRatingController : ControllerBase
 
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Policy = "Teacher")]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteStudentReport([FromRoute] int id)
     {

@@ -55,6 +55,10 @@ builder.Services.AddAuthorization(options =>
     options.DefaultPolicy = new AuthorizationPolicyBuilder()
         .RequireAuthenticatedUser()
         .Build();
+    options.AddPolicy("Teacher", policy => {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("role", "0");
+    });
 });
 
 var app = builder.Build();

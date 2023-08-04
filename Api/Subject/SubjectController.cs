@@ -1,5 +1,6 @@
 ﻿using GestaoEscolar_M3S01.Api.Subject.DTO;
 using GestaoEscolar_M3S01.Api.Subject.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,7 @@ public class SubjectController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [Authorize(Policy = "Teacher")]
     [HttpPost]
     public async Task<IActionResult> AddSubject([FromBody] SubjectRequest request)
     {
@@ -53,6 +55,7 @@ public class SubjectController : ControllerBase
 
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Policy = "Teacher")]
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteSubject([FromRoute] int id){
         try {
@@ -66,6 +69,7 @@ public class SubjectController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [Authorize(Policy = "Teacher")]
     [HttpPut]
     public async Task<IActionResult> CreateSubject([FromBody] SubjectRequest request)
     {
