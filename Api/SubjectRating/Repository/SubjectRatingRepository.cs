@@ -28,22 +28,19 @@ public class SubjectRatingRepository: ISubjectRatingRepository
         return response;
     }
 
-    public async Task<Models.SubjectRating> AddSubjectReport(SubjectRatingRequest request)
+    public async Task<Models.SubjectRating> AddSubjectReport(Models.SubjectRating rating)
     {
-        if (request.Mark < 0)
-        {
-            throw new ArgumentException(nameof(request.Mark));
-        }
-        var entity = new Models.SubjectRating
-        {
-            ReportId = request.ReportId,
-            SubjectId = request.SubjectId,
-            Mark = request.Mark
-        };
-        _context.SubjectRatings.Add(entity);
+        _context.SubjectRatings.Add(rating);
         await _context.SaveChangesAsync();
-        return entity;
+        return rating;
     }
+
+    // public async Task<Models.SubjectRating> AddSubjectReport(Models.SubjectRating entity)
+    // {
+    //     _context.SubjectRatings.Add(entity);
+    //     await _context.SaveChangesAsync();
+    //     return entity;
+    // }
 
     public async Task DeleteSubjectReport(int id)
     {

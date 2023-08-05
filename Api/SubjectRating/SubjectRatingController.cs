@@ -1,5 +1,6 @@
 using GestaoEscolar_M3S01.Api.SubjectRating.DTO;
 using GestaoEscolar_M3S01.Api.SubjectRating.Repository;
+using GestaoEscolar_M3S01.Api.SubjectRating.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +12,13 @@ namespace GestaoEscolar_M3S01.Api.SubjectRating;
 public class SubjectRatingController : ControllerBase
 {
     private readonly ISubjectRatingRepository _repository;
+    private readonly ISubjectRatingService _subjectRatingService;
 
-    public SubjectRatingController(ISubjectRatingRepository repository)
+    public SubjectRatingController(ISubjectRatingRepository repository, 
+        ISubjectRatingService subjectRatingService)
     {
-        _repository = repository;
+        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
+        _subjectRatingService = subjectRatingService ?? throw new ArgumentNullException(nameof(subjectRatingService));
     }
     
     [ProducesResponseType(200)]
@@ -42,7 +46,7 @@ public class SubjectRatingController : ControllerBase
     {
         try
         {
-            var entity = await  _repository.AddSubjectReport(request);
+            var entity = await  _subjectRatingService.AddRating(request);
             return Created($"", entity);
         }
         catch (DbUpdateException)

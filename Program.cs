@@ -3,6 +3,7 @@ using GestaoEscolar_M3S01.Api.Report.Repository;
 using GestaoEscolar_M3S01.Api.Subject.Repository;
 using GestaoEscolar_M3S01.Api.Subject.Validatior;
 using GestaoEscolar_M3S01.Api.SubjectRating.Repository;
+using GestaoEscolar_M3S01.Api.SubjectRating.Services;
 using GestaoEscolar_M3S01.Mappings;
 using GestaoEscolar_M3S01.Repository;
 using GestaoEscolar_M3S01.Services;
@@ -30,6 +31,7 @@ builder.Services.AddScoped<IUserMapping, UserMapping>();
 builder.Services.AddScoped<SubjectValidator>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<ISubjectRatingService, SubjectRatingService>();
 
 builder.Services.AddAuthentication(options =>
 {
