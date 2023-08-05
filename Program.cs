@@ -57,7 +57,7 @@ builder.Services.AddAuthorization(options =>
         .Build();
     options.AddPolicy("Teacher", policy => {
         policy.RequireAuthenticatedUser();
-        policy.RequireClaim("role", "0");
+        policy.RequireClaim("role", "Teacher");
     });
 });
 

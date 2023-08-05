@@ -31,8 +31,8 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Policy = "Teacher")]
-    public async Task<IActionResult> AddUser([FromQuery] UserRequest request)
+    [AllowAnonymous]
+    public async Task<IActionResult> AddUser([FromBody] UserRequest request)
     {
         try
         {

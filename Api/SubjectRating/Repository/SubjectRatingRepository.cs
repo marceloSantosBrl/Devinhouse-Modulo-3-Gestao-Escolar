@@ -30,6 +30,10 @@ public class SubjectRatingRepository: ISubjectRatingRepository
 
     public async Task<Models.SubjectRating> AddSubjectReport(SubjectRatingRequest request)
     {
+        if (request.Mark < 0)
+        {
+            throw new ArgumentException(nameof(request.Mark));
+        }
         var entity = new Models.SubjectRating
         {
             ReportId = request.ReportId,
